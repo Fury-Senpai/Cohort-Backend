@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 app.use(express.json()) // // enables express to read req.body data
+// // app.use is a middleware
 const notes = [
     {
         title: 'Reading books',
@@ -9,6 +10,7 @@ const notes = [
     }
 ]
 app.post('/note' , (req,res)=>{ 
+    console.log(req.body);
    res.send('Note created');
 })
 
