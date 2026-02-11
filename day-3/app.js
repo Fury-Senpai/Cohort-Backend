@@ -3,15 +3,16 @@ const app = express();
 
 app.use(express.json()) // // enables express to read req.body data
 // // app.use is a middleware
-const notes = [
-    {
-        title: 'Reading books',
-        desc: 'Have to read animal farm'
-    }
-]
+
+const notes = [];
+
 app.post('/note' , (req,res)=>{ 
-    console.log(req.body);
-   res.send('Note created');
+    notes.push(req.body)
+    res.send('Note created');
+})
+
+app.get('/show',(req,res)=>{
+    res.send(notes)
 })
 
 app.listen(3000 , ()=>{
