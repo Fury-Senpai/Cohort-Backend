@@ -39,5 +39,21 @@ app.delete('/delete-note/:id' , (req,res)=>{
     res.send('Deleted')
 })
 
+// 2nd method to delete 
+app.delete('/delete/:id' , (req,res)=>{
+    const {id} = req.params;
+    delete notes[id];
+    res.send('Deleted')
+})
+
+// delete all
+app.delete('/delete-all', (req,res)=>{
+    notes.splice(0 , notes.length);
+    res.send('Deleted all')
+})
+//
+// UPDATE ROUTE
+//
+
 
 module.exports = app;
