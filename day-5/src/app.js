@@ -28,4 +28,22 @@ app.post('/notes' , (req,res)=>{
     }
 })
 
+// DELETE /notes
+app.delete('/notes/:id' , (req,res)=>{
+    try {
+        const {id} = req.params;
+        delete notes[id];
+        res.status(204).json(
+            {
+                message : 'Note Deleted'
+            }
+        )
+    } catch (error) {
+        res.status(400).json(
+            {
+                message : 'Bad Request'
+            }
+        )
+    }
+})
 module.exports = app;
