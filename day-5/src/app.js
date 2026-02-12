@@ -4,18 +4,28 @@
 // 
 const express = require('express')
 const app = express();
-app.use(express.json);
+app.use(express.json());
 
 const notes = [];
 
 // POST /notes
 app.post('/notes' , (req,res)=>{
-    notes.push(req.body);
-    res.status(201).json(
-        {
-            message : "Note Created Successfully"
-        }
-    )    
+    try {
+        notes.push(req.body);
+        res.status(201).json(
+            {
+                message : "Note Created Successfully",
+            
+            }
+        )    
+    } catch (error) {
+        res.status(500).json(
+            {
+                message : 'something went wrong',
+                
+            }
+        )
+    }
 })
 
 module.exports = app;
