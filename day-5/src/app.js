@@ -8,6 +8,22 @@ app.use(express.json());
 
 const notes = [];
 
+// GET /notes
+app.get('/note' , (req,res)=>{
+    try {
+        res.status(200).json(
+            {
+                notes : notes
+            }
+        )
+    } catch (error) {
+        res.status(404).json(
+            {
+                message: "Bad Request"
+            }
+        )
+    }
+})
 // POST /notes
 app.post('/notes' , (req,res)=>{
     try {
