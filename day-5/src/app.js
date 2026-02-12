@@ -62,4 +62,24 @@ app.delete('/notes/:id' , (req,res)=>{
         )
     }
 })
+
+// PATCH /notes
+app.patch('/notes/:id' , (req,res)=>{
+    try {
+        const {id} = req.params;
+        const {desc} = req.body;
+        notes[id].desc = desc;
+        res.status(200).json(
+            {
+                message : "updated successfully"
+            }
+        )
+    } catch (error) {
+        res.status(404).json(
+            {
+                message : "Something went wrong"
+            }
+        )
+    }
+})
 module.exports = app;
