@@ -51,9 +51,37 @@ app.delete('/delete-all', (req,res)=>{
     notes.splice(0 , notes.length);
     res.send('Deleted all')
 })
+
 //
-// UPDATE ROUTE
+// UPDATE NOTE PARTIALLY
 //
+
+app.patch('/update-desc/:id' , (req,res)=>{
+    try {
+        const {id} = req.params;
+        notes[id].desc = req.body.desc;
+        res.send('Updated Successfully');
+    } catch (error) {
+        res.send('Something went wrong');
+        
+    }
+})
+
+// update all
+
+app.put('/update/:id' , (req,res)=>{
+    try{
+        const {id} = req.params;
+        const {title , desc} = req.body;
+
+        notes[id].title = title;
+        notes[id].desc = desc;
+
+        res.send('Changed Succesfully');
+    }catch(error) {
+        res.send('Something went wrong')
+    }
+})
 
 
 module.exports = app;
