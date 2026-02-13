@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 async function connectToDb(){
     try {
         await mongoose.connect("mongodb+srv://harbola03nitish_db_user:J91I6Lk8UW3MfJ83@cluster0.6xajgkw.mongodb.net/day-7");
