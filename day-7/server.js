@@ -1,9 +1,10 @@
 // - server ko run karna
 // - database se connect karna
+require('dotenv').config() 
 const app = require('./src/app');
-const mongoose = require('mongoose');
 const connectToDb = require('./src/config/database')
-const PORT = 3000;
+
+PORT = 3000 || process.env.PORT;
 
 connectToDb();
 
